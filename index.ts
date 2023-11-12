@@ -48,14 +48,19 @@ function webworker(options?: Partial<WebWorkerPluginOptions>) {
 
   function createContents(data: string, inline: boolean) {
     return inline
-      ? `function createWorker() {
-      return new Worker(URL.createObjectURL(new Blob([\`${data}\`], { type: 'text/javascript' })));
-    }
-    export default createWorker;`
-      : `function createWorker() {
-      return new Worker(\`${data.replaceAll("\\", "/")}\`);
-    }
-    export default createWorker;`;
+      ? `
+        function createWorker() {
+          const blob = new Blob([\`${data}\`], { type: 'text/javascript' });
+          setTimeout(() => URL.revokeObjectURL(blob), 0);
+          
+          return new Worker(URL.createObjectURL(blob));
+        }
+        export default createWorker;`
+      : `
+        function createWorker() {
+          return new Worker(\`${data.replaceAll("\\", "/")}\`);
+        }
+        export default createWorker;`;
   }
 
   async function onBuildLoad(
