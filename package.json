@@ -1,0 +1,33 @@
+{
+  "name": "esbuild-plugin-webworker",
+  "version": "1.0.0",
+  "description": "Esbuild plugin to handler webworker",
+  "main": "index.js",
+  "types": "index.d.ts",
+  "scripts": {
+    "build": "tsc --project tsconfig.json && npm run post:build",
+    "post:build": "cp ./package.json ./dist/package.json && cp ./README.md ./dist/README.md"
+  },
+  "keywords": [
+    "esbuild",
+    "webworker",
+    "esbuild plugin",
+    "esbuild plugin webworker"
+  ],
+  "author": "",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/simo-an/esbuild-plugin-webworker.git"
+  },
+  "bugs": {
+    "url": "https://github.com/simo-an/esbuild-plugin-webworker/issues"
+  },
+  "dependencies": {
+    "esbuild": "^0.19.5"
+  },
+  "devDependencies": {
+    "@types/node": "^20.9.0",
+    "typescript": "^5.2.2"
+  }
+}
