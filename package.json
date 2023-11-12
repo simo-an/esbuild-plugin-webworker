@@ -1,7 +1,7 @@
 {
   "name": "esbuild-plugin-webworker",
-  "version": "1.0.0",
-  "description": "Esbuild plugin to handler webworker",
+  "version": "0.0.1",
+  "description": "ESbuild plugin to handler webworker",
   "main": "index.js",
   "types": "index.d.ts",
   "scripts": {

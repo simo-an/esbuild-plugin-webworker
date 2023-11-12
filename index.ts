@@ -16,6 +16,7 @@ interface WebWorkerPluginOptions {
   out: string;
   minify: boolean;
   filter: RegExp;
+  keepImportName: boolean;
 }
 
 const defaultOptions: WebWorkerPluginOptions = {
@@ -23,10 +24,11 @@ const defaultOptions: WebWorkerPluginOptions = {
   out: "dist",
   minify: true,
   filter: /\?worker$/,
+  keepImportName: false,
 };
 
 function webworker(options?: Partial<WebWorkerPluginOptions>) {
-  const { inline, out, minify, filter } = {
+  const { inline, out, minify, filter, keepImportName } = {
     ...defaultOptions,
     ...options,
   };
@@ -37,10 +39,8 @@ function webworker(options?: Partial<WebWorkerPluginOptions>) {
   }
 
   function onBuildResolve(args: OnResolveArgs): OnResolveResult {
-    console.warn(args.path.replace(filter, ""));
-
     return {
-      path: args.path.replace(filter, ""),
+      path: keepImportName ? args.path : args.path.replace(filter, ""),
       namespace: PLUGIN_NAMESPACE,
       pluginData: { importer: args.importer },
     };
