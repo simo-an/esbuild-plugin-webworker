@@ -1,11 +1,7 @@
 [npm]: https://img.shields.io/npm/v/esbuild-plugin-webworker
 [npm-url]: https://www.npmjs.com/package/esbuild-plugin-webworker
-[size]: https://packagephobia.now.sh/badge?p=esbuild-plugin-webworker
-[size-url]: https://packagephobia.now.sh/result?p=esbuild-plugin-webworker
 
 [![npm][npm]][npm-url]
-[![size][size]][size-url]
-[![libera manifesto](https://img.shields.io/badge/libera-manifesto-lightgrey.svg)](https://liberamanifesto.com)
 
 # esbuild-plugin-webworker
 
